@@ -13,6 +13,8 @@ function createGrid() {
         for(let j = 0; j < numSquares; j++) {
             const square = document.createElement("div");
             square.classList.add("square");
+            square.style.backgroundColor = "black";
+            square.style.opacity = 0;
             div.appendChild(square);
         }
         container.appendChild(div);
@@ -27,7 +29,10 @@ function clearGrid() {
 
 
 function highlight(square) {
-    square.style.backgroundColor = "black";
+    let opacity = Number(square.style.opacity);
+    if (opacity < 1) opacity += 0.1;
+
+    square.style.opacity = opacity;
 }
 
 

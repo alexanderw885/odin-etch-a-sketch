@@ -13,7 +13,8 @@ function createGrid() {
         for(let j = 0; j < numSquares; j++) {
             const square = document.createElement("div");
             square.classList.add("square");
-            square.style.backgroundColor = "black";
+            square.style.backgroundColor = setColor();
+            
             square.style.opacity = 0;
             div.appendChild(square);
         }
@@ -28,6 +29,16 @@ function clearGrid() {
 }
 
 
+function setColor() {
+    const hue = Math.floor(Math.random() * 360);
+    const saturation = Math.floor(Math.random() * 100);
+    const lightness = Math.floor(Math.random() * 100);
+
+    const output = `hsl(${hue} ${saturation}% ${lightness}%)`;
+    return output;
+}
+
+
 function highlight(square) {
     let opacity = Number(square.style.opacity);
     if (opacity < 1) opacity += 0.1;
@@ -35,8 +46,6 @@ function highlight(square) {
     square.style.opacity = opacity;
 }
 
-
-createGrid();
 
 
 // Adding the event listener to the container instead of 
@@ -61,3 +70,6 @@ reset.addEventListener("click", () => {
     clearGrid();
     createGrid();
 });
+
+
+createGrid();

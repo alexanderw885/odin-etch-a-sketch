@@ -38,7 +38,6 @@ createGrid();
 // each square improves website performance
 container.addEventListener("mouseover", (e) => {
     const square = e.target;
-    console.log(`target: ${square.classList}`);
     if(square.classList.contains("square")) {
         highlight(square);
     }
@@ -48,14 +47,12 @@ container.addEventListener("mouseover", (e) => {
 const reset = document.querySelector(".reset");
 reset.addEventListener("click", () => {
     numSquares = Number(prompt("How many squares wide should the grid be?"));
-    console.log(numSquares, typeof numSquares);
     if (numSquares > MAX_SIZE) {
         numSquares = MAX_SIZE;
     }
     if (Number.isNaN(numSquares) || numSquares <= 0) {
         numSquares = DEFAULT_SIZE
     }
-    console.log(numSquares, typeof numSquares);
     clearGrid();
     createGrid();
 });

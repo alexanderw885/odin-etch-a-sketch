@@ -2,11 +2,11 @@ const container = document.querySelector("#container");
 const MAX_SIZE = 100;
 const DEFAULT_SIZE = 16;
 
+
 let numSquares = DEFAULT_SIZE;
 
 
 function createGrid() {
-
     for(let i = 0; i < numSquares; i++) {
         const div = document.createElement("div");
         div.classList.add("row");
@@ -19,6 +19,7 @@ function createGrid() {
     }
 }
 
+
 function clearGrid() {
     const grid = document.querySelectorAll(".row");
     grid.forEach(row => row.remove());
@@ -29,13 +30,14 @@ function highlight(square) {
     square.style.backgroundColor = "black";
 }
 
+
 createGrid();
+
 
 // Adding the event listener to the container instead of 
 // each square improves website performance
 container.addEventListener("mouseover", (e) => {
     const square = e.target;
-    // console.log(square.classList)
     console.log(`target: ${square.classList}`);
     if(square.classList.contains("square")) {
         highlight(square);
@@ -56,4 +58,4 @@ reset.addEventListener("click", () => {
     console.log(numSquares, typeof numSquares);
     clearGrid();
     createGrid();
-})
+});
